@@ -36,7 +36,18 @@ app.get('/', (req, res) => {
 app.post('/signin', (req, res) => {
     // res.send('signin API');
     // console.log(req.body);
-    
+    let userCreate = new authModel({
+        email: req.body.email,
+        password: req.body.password,
+    })
+    userCreate.save()
+        .then((responce) => {
+            res.status(200).send({result:responce,message:"Data Stored Successfully"})
+            // console.log(responce, "responce success")
+        }).catch((err) => {
+            res.status(400).send({result:err.message,message:"Data Not Stored Successfully"})
+            // console.log(err, "err")
+        })
 })
 
 app.listen(port, () => {
