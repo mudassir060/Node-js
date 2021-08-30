@@ -16,7 +16,7 @@ const todoAdd = async(req, res) =>{
 
 const todoGet = async(req,res)=>{
    var result = await todoModel.find({})
-   res.status(200).send({message:'All Data Fetched Successfuly',data:result})
+   res.status(200).send({message:'All Data Fetched Successfuly',data:result.taskName})
 }
 
 module.exports={todoAdd,todoGet}
